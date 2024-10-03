@@ -8,22 +8,21 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var startBtn: UIButton!{
+        didSet{
+            startBtn.isEnabled = false
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameLabel.addTarget(self, action: #selector(isEnable(_:)), for: .editingChanged)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func isEnable(_ sender: UITextField) {
+        startBtn.isEnabled = sender.text?.count ?? 0 >= 3
     }
-    */
 
 }
