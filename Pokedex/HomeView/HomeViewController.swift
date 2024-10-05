@@ -24,5 +24,13 @@ class HomeViewController: UIViewController {
     @objc func isEnable(_ sender: UITextField) {
         startBtn.isEnabled = sender.text?.count ?? 0 >= 3
     }
+    
+    @IBAction func playClick(_ sender: Any){
+        let cardViewController = CardsViewController (nibName: "CardsViewController", bundle: nil)
+        let cardNavigationController = UINavigationController(rootViewController: cardViewController)
+        cardViewController.colorTest = nameLabel.text!
+        cardNavigationController.modalPresentationStyle = .fullScreen
+        present(cardNavigationController, animated: true)
+    }
 
 }

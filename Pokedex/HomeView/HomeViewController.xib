@@ -48,6 +48,9 @@
                             <color key="tintColor" red="0.86718964580000002" green="0.1251805127" blue="0.095770023760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Start!"/>
+                            <connections>
+                                <action selector="playClick:" destination="-1" eventType="touchUpInside" id="S2R-w6-lvT"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
