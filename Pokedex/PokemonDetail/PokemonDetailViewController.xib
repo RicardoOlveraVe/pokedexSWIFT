@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokemonDetailViewController" customModule="Pokedex" customModuleProvider="target">
             <connections>
+                <outlet property="bkbtn" destination="yud-kj-ln6" id="lNj-Ku-skg"/>
                 <outlet property="cardCell" destination="gvI-uJ-iA3" id="SFc-DD-mJO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,11 +26,21 @@
                         <constraint firstAttribute="width" secondItem="VYe-AJ-Veu" secondAttribute="height" multiplier="393:58" id="wcQ-Me-FGi"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedexTitle" translatesAutoresizingMaskIntoConstraints="NO" id="BM1-rN-DTc">
-                    <rect key="frame" x="16" y="42" width="185" height="31"/>
-                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yud-kj-ln6">
+                    <rect key="frame" x="0.0" y="88" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="9af-aq-ZXz"/>
+                        <constraint firstAttribute="width" secondItem="yud-kj-ln6" secondAttribute="height" multiplier="1:1" id="QKU-ZN-xpa"/>
+                    </constraints>
+                    <color key="tintColor" red="0.86718964580000002" green="0.1251805127" blue="0.095770023760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system"/>
+                    <connections>
+                        <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="xdv-mh-QSC"/>
+                    </connections>
+                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gvI-uJ-iA3">
-                    <rect key="frame" x="0.0" y="116" width="393" height="702"/>
+                    <rect key="frame" x="0.0" y="123" width="393" height="695"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YEJ-YQ-ror">
                         <size key="itemSize" width="128" height="128"/>
@@ -38,21 +49,28 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedexTitle" translatesAutoresizingMaskIntoConstraints="NO" id="BM1-rN-DTc">
+                    <rect key="frame" x="6" y="42" width="196" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="ZwY-4m-RHa"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="gvI-uJ-iA3" firstAttribute="top" secondItem="VYe-AJ-Veu" secondAttribute="bottom" constant="16" id="6RS-Ih-wqL"/>
+                <constraint firstItem="yud-kj-ln6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5AB-lP-Mgl"/>
                 <constraint firstItem="gvI-uJ-iA3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Djn-IQ-MXg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gvI-uJ-iA3" secondAttribute="trailing" id="FtG-7c-HwI"/>
-                <constraint firstItem="BM1-rN-DTc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="HNg-Pv-gaw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BM1-rN-DTc" secondAttribute="trailing" constant="191" id="Gil-p5-2Vg"/>
+                <constraint firstItem="yud-kj-ln6" firstAttribute="top" secondItem="BM1-rN-DTc" secondAttribute="bottom" constant="8" id="S2F-P6-moR"/>
                 <constraint firstItem="VYe-AJ-Veu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="42" id="TVz-8M-jaU"/>
-                <constraint firstItem="gvI-uJ-iA3" firstAttribute="top" secondItem="BM1-rN-DTc" secondAttribute="bottom" constant="43" id="VUS-il-RuA"/>
+                <constraint firstItem="gvI-uJ-iA3" firstAttribute="top" secondItem="yud-kj-ln6" secondAttribute="bottom" id="avV-N6-zo0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gvI-uJ-iA3" secondAttribute="bottom" id="eJm-ZS-VgS"/>
                 <constraint firstItem="VYe-AJ-Veu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jfB-W0-1e9"/>
-                <constraint firstItem="BM1-rN-DTc" firstAttribute="top" secondItem="VYe-AJ-Veu" secondAttribute="top" id="kNi-Gm-X2Q"/>
+                <constraint firstItem="BM1-rN-DTc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="6" id="nHF-dm-1oB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VYe-AJ-Veu" secondAttribute="trailing" id="rn9-hn-0kj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BM1-rN-DTc" secondAttribute="trailing" constant="192" id="wGy-SQ-axV"/>
+                <constraint firstItem="BM1-rN-DTc" firstAttribute="top" secondItem="VYe-AJ-Veu" secondAttribute="top" id="sjd-We-Qla"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
@@ -60,6 +78,7 @@
     <resources>
         <image name="pokeTop" width="1440" height="203"/>
         <image name="pokedexTitle" width="676" height="121"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

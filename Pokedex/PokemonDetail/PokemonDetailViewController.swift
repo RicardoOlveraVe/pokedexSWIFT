@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import OggDecoder
+import AVFoundation
 
 class PokemonDetailViewController: UIViewController {
     
     var urlPokemon = ""
+    
+    var criesSound = ""
     
     var firstType = ""
     var secondType = ""
@@ -21,7 +25,10 @@ class PokemonDetailViewController: UIViewController {
     var speed = ""
     
     var pokemonDetail: Pokemon!
+    let decoderOGG = OGGDecoder()
+    var audioPlayer: AVAudioPlayer?
     
+    @IBOutlet weak var bkbtn: UIButton!
     @IBOutlet weak var cardCell: UICollectionView! {
         didSet {
             cardCell.dataSource = self
@@ -31,7 +38,7 @@ class PokemonDetailViewController: UIViewController {
             cardCell.collectionViewLayout = layout
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -39,11 +46,11 @@ class PokemonDetailViewController: UIViewController {
         fetchPokemonData()
         // Do any additional setup after loading the view.
     }
-
+    
     func registerCells() {
         cardCell.register(UINib(nibName: "DetailPokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailPokemonCollectionViewCell")
     }
-
+    
     func fetchPokemonData() {
         guard let url = URL(string: urlPokemon) else {return}
         
@@ -63,7 +70,45 @@ class PokemonDetailViewController: UIViewController {
         
     }
     
-   
+    /*func playsound(_ sender: UIButton) {
+     guard let soundURL = URL(string: criesSound) else {
+     print("Invalid sound URL")
+     return
+     }
+     
+     URLSession.shared.dataTask(with: soundURL) { [weak self] data, response, error in
+     guard let data = data, error == nil else {
+     print(error?.localizedDescription ?? "Error loading sound")
+     return
+     }
+     
+     do {
+     // Decodificar archivo .ogg
+     if let decodedData = try? self?.decoderOGG.decodeOgg(data: data) {
+     self?.playAudio(with: decodedData)
+     } else {
+     print("Failed to decode OGG")
+     }
+     } catch {
+     print("Error decoding sound: \(error)")
+     }
+     }.resume()
+     }
+     
+     func playAudio(with data: Data) {
+     do {
+     audioPlayer = try AVAudioPlayer(data: data)
+     audioPlayer?.prepareToPlay()
+     audioPlayer?.play()
+     } catch {
+     print("Error playing sound: \(error)")
+     }
+     }
+     */
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension PokemonDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
