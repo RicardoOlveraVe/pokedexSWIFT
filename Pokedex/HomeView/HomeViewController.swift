@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     @IBAction func playClick(_ sender: Any){
         let cardViewController = CardsViewController (nibName: "CardsViewController", bundle: nil)
         let cardNavigationController = UINavigationController(rootViewController: cardViewController)
-        cardViewController.colorTest = nameLabel.text!
+        cardViewController.name = nameLabel.text!
         cardNavigationController.modalPresentationStyle = .fullScreen
         present(cardNavigationController, animated: true)
     }
