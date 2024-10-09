@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import OggDecoder
+import AVFoundation
 
 class DetailPokemonCollectionViewCell: UICollectionViewCell {
     
@@ -15,6 +17,8 @@ class DetailPokemonCollectionViewCell: UICollectionViewCell {
     var color = ColorTypes.colors(for: "fire")
     var pokeType = ""
     var pokemonData: Pokemon!
+    var decoderOGG = OGGDecoder()
+    var audioPlayer: AVAudioPlayer?
     
     //Details of pokemon
     var firstType = ""
@@ -28,6 +32,7 @@ class DetailPokemonCollectionViewCell: UICollectionViewCell {
     var id = ""
     var height = ""
     var weight = ""
+    var criesSound = "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/2.ogg"
     
     @IBOutlet weak var bgGradient: UIView!
     @IBOutlet weak var pokeImage: UIImageView!
@@ -87,6 +92,7 @@ class DetailPokemonCollectionViewCell: UICollectionViewCell {
         pokemonData = pokemon
         setupImageView()
         mapData()
+        playSoundButtonTapped()
     }
     
     func setupImageView() {
@@ -141,7 +147,14 @@ class DetailPokemonCollectionViewCell: UICollectionViewCell {
         weightLabel.text = String(pokemonData.weight)
         idLabel.text = "#\(pokemonData.id)"
         ability1.text = pokemonData.abilities[0].ability.name
-        ability2.text = pokemonData.abilities[1].ability.name
+        if pokemonData.abilities.count > 1 {
+            ability2.text = pokemonData.abilities[1].ability.name
+        } else {
+            ability2.text = "-"
+        }
+        
+        criesSound = pokemonData.cries.latest
+        print(criesSound)
         firstType = pokemonData.types[0].type.name
         if pokemonData.types.count > 1 {
             secondType = pokemonData.types[1].type.name
@@ -183,6 +196,62 @@ class DetailPokemonCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    
+    func playSoundButtonTapped() {
+            guard let soundURL = URL(string: criesSound) else {
+                print("Invalid sound URL")
+                return
+            }
+            // Descarga el archivo temporalmente
+            downloadFile(from: soundURL) { [weak self] localURL, error in
+               //print(localURL)
+                if let error = error {
+                    print("Error downloading file: \(error.localizedDescription)")
+                    return
+                }
+
+                guard let localURL = localURL else { return }
+
+                // Decodifica el archivo OGG
+                do {
+                    let decodedData = self?.decoderOGG.decode(localURL)
+                   self?.playAudio(with: try Data(contentsOf: decodedData!))
+                } catch {
+                    print("Error decoding sound: \(error)")
+                }
+            }
+        }
+
+        func downloadFile(from url: URL, completion: @escaping (URL?, Error?) -> Void) {
+            let task = URLSession.shared.downloadTask(with: url) { tempLocalURL, response, error in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+
+                // Asegúrate de que se ha recibido un archivo
+                guard let tempLocalURL = tempLocalURL else {
+                    completion(nil, NSError(domain: "DownloadError", code: 0, userInfo: [NSLocalizedDescriptionKey: "No file downloaded."]))
+                    return
+                }
+
+                // Retorna la URL del archivo temporal
+                completion(tempLocalURL, nil)
+            }
+            task.resume()
+        }
+        
+        func playAudio(with data: Data?) {
+            guard let data = data else { return }
+            do {
+                audioPlayer = try AVAudioPlayer(data: data)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+            } catch {
+                print("Error playing sound: \(error)")
+            }
+        }
 }
 
 

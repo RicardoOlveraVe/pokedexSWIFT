@@ -21,11 +21,11 @@
 		9E5C20272CB0C73200ADE011 /* CardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C20252CB0C73200ADE011 /* CardsViewController.xib */; };
 		9E5C202B2CB119DA00ADE011 /* CardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C20292CB119DA00ADE011 /* CardsCollectionViewCell.swift */; };
 		9E5C202C2CB119DA00ADE011 /* CardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C202A2CB119DA00ADE011 /* CardsCollectionViewCell.xib */; };
-		9ECC13B72CB5DE0C0088DCFD /* OggDecoder in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECC13B62CB5DE0C0088DCFD /* OggDecoder */; };
 		9ECC13BB2CB601050088DCFD /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECC13B92CB601050088DCFD /* PokemonDetailViewController.swift */; };
 		9ECC13BC2CB601050088DCFD /* PokemonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ECC13BA2CB601050088DCFD /* PokemonDetailViewController.xib */; };
 		9ECC13C02CB603050088DCFD /* DetailPokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECC13BE2CB603050088DCFD /* DetailPokemonCollectionViewCell.swift */; };
 		9ECC13C12CB603050088DCFD /* DetailPokemonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ECC13BF2CB603050088DCFD /* DetailPokemonCollectionViewCell.xib */; };
+		9ECC13C32CB658230088DCFD /* OggDecoder in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECC13C22CB658230088DCFD /* OggDecoder */; };
 		9EE39AC02CB4A79800F93461 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE39ABF2CB4A79800F93461 /* Pokemon.swift */; };
 		9EE39AC22CB4FE8300F93461 /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE39AC12CB4FE8300F93461 /* PokemonList.swift */; };
 /* End PBXBuildFile section */
@@ -48,7 +48,7 @@
 		9E5C20252CB0C73200ADE011 /* CardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsViewController.xib; sourceTree = "<group>"; };
 		9E5C20292CB119DA00ADE011 /* CardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E5C202A2CB119DA00ADE011 /* CardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsCollectionViewCell.xib; sourceTree = "<group>"; };
-		9ECC13B92CB601050088DCFD /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
+		9ECC13B92CB601050088DCFD /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		9ECC13BA2CB601050088DCFD /* PokemonDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonDetailViewController.xib; sourceTree = "<group>"; };
 		9ECC13BE2CB603050088DCFD /* DetailPokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		9ECC13BF2CB603050088DCFD /* DetailPokemonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPokemonCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6693F70C83CA725DBECDFB60 /* Pods_Pokedex.framework in Frameworks */,
-				9ECC13B72CB5DE0C0088DCFD /* OggDecoder in Frameworks */,
+				9ECC13C32CB658230088DCFD /* OggDecoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +198,7 @@
 			);
 			name = Pokedex;
 			packageProductDependencies = (
-				9ECC13B62CB5DE0C0088DCFD /* OggDecoder */,
+				9ECC13C22CB658230088DCFD /* OggDecoder */,
 			);
 			productName = Pokedex;
 			productReference = 9E4392262CAE66210005DC41 /* Pokedex.app */;
@@ -544,7 +544,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9ECC13B62CB5DE0C0088DCFD /* OggDecoder */ = {
+		9ECC13C22CB658230088DCFD /* OggDecoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9ECC13B52CB5DE0C0088DCFD /* XCRemoteSwiftPackageReference "OggDecoder" */;
 			productName = OggDecoder;
